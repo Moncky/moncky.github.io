@@ -4,17 +4,6 @@
   
   <url>
     <loc>http://ops.moncky.ninja/</loc>
-    <lastmod>2020-04-15T20:24:53+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ops.moncky.ninja/post/myfirstpost/</loc>
-    <lastmod>2020-04-15T20:24:53+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ops.moncky.ninja/post/</loc>
-    <lastmod>2020-04-15T20:24:53+01:00</lastmod>
   </url>
   
   <url>
@@ -23,6 +12,10 @@
   
   <url>
     <loc>http://ops.moncky.ninja/tags/index/</loc>
+  </url>
+  
+  <url>
+    <loc>http://ops.moncky.ninja/post/</loc>
   </url>
   
   <url>
