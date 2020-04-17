@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>index on NinjaOps</title>
-    <link>http://ops.moncky.ninja/tags/index/</link>
+    <link>https://ops.moncky.ninja/tags/index/</link>
     <description>Recent content in index on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     
-	<atom:link href="http://ops.moncky.ninja/tags/index/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ops.moncky.ninja/tags/index/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Posts</title>
-      <link>http://ops.moncky.ninja/post/</link>
+      <link>https://ops.moncky.ninja/post/</link>
       <pubDate>Wed, 15 Apr 2020 20:24:53 +0100</pubDate>
       
-      <guid>http://ops.moncky.ninja/post/</guid>
+      <guid>https://ops.moncky.ninja/post/</guid>
       <description></description>
     </item>
     

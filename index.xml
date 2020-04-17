@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NinjaOps</title>
-    <link>http://ops.moncky.ninja/</link>
+    <link>https://ops.moncky.ninja/</link>
     <description>Recent content on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 15 Apr 2020 20:24:53 +0100</lastBuildDate>
     
-	<atom:link href="http://ops.moncky.ninja/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ops.moncky.ninja/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MyFirstPost</title>
-      <link>http://ops.moncky.ninja/post/myfirstpost/</link>
+      <link>https://ops.moncky.ninja/post/myfirstpost/</link>
       <pubDate>Wed, 15 Apr 2020 20:24:53 +0100</pubDate>
       
-      <guid>http://ops.moncky.ninja/post/myfirstpost/</guid>
+      <guid>https://ops.moncky.ninja/post/myfirstpost/</guid>
       <description>&lt;p&gt;This is my first post using Hugo blogging platform&lt;/p&gt;</description>
     </item>
     
