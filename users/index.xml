@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Users on NinjaOps</title>
+    <link>https://ops.moncky.ninja/users/</link>
+    <description>Recent content in Users on NinjaOps</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 15 Apr 2020 20:24:03 +0100</lastBuildDate>
+    
+	<atom:link href="https://ops.moncky.ninja/users/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Myfirstpost</title>
+      <link>https://ops.moncky.ninja/users/callum/pycharmprojects/hugoblog/posts/myfirstpost/</link>
+      <pubDate>Wed, 15 Apr 2020 20:24:03 +0100</pubDate>
+      
+      <guid>https://ops.moncky.ninja/users/callum/pycharmprojects/hugoblog/posts/myfirstpost/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

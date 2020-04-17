@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on NinjaOps</title>
-    <link>https://ops.moncky.ninja/post/</link>
-    <description>Recent content in Posts on NinjaOps</description>
+    <title>rds on NinjaOps</title>
+    <link>https://ops.moncky.ninja/tags/rds/</link>
+    <description>Recent content in rds on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Fri, 17 Apr 2020 11:28:33 +0100</lastBuildDate>
     
-	<atom:link href="https://ops.moncky.ninja/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ops.moncky.ninja/tags/rds/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       <guid>https://ops.moncky.ninja/post/rds_mysql_import/</guid>
       <description>&lt;p&gt;Importing MySQL Databases to MySQL Backed Aurora is on the face of it quite simple. But I
 ran into some issues.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>MyFirstPost</title>
-      <link>https://ops.moncky.ninja/post/myfirstpost/</link>
-      <pubDate>Wed, 15 Apr 2020 20:24:53 +0100</pubDate>
-      
-      <guid>https://ops.moncky.ninja/post/myfirstpost/</guid>
-      <description>&lt;p&gt;This is my first post using Hugo blogging platform&lt;/p&gt;</description>
     </item>
     
   </channel>

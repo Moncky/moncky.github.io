@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>
+  
+     Importing MySQL Databases to MySQL Backed Aurora PART 1 | 
+    NinjaOps
+  
+</title><meta name="description" content="Things Discover whilst DevOopsing"><meta name="author" content="Callum Scott">
+
+
+
+
+    
+        
+            <link rel="stylesheet" href="/dist/main.37ab3f61b95417873748.min.css">
+        
+    
+
+
+
+
+<link rel="canonical" href="https://ops.moncky.ninja/post/rds_mysql_import/"><meta property="og:title" content="Importing MySQL Databases to MySQL Backed Aurora PART 1" />
+<meta property="og:description" content="Importing MySQL Databases to MySQL Backed Aurora is on the face of it quite simple. But I
+ran into some issues." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ops.moncky.ninja/post/rds_mysql_import/" />
+<meta property="og:image" content="https://ops.moncky.ninja/images/codescreen.png" />
+<meta property="article:published_time" content="2020-04-17T11:28:33+01:00" />
+<meta property="article:modified_time" content="2020-04-17T11:28:33+01:00" />
+<meta itemprop="name" content="Importing MySQL Databases to MySQL Backed Aurora PART 1">
+<meta itemprop="description" content="Importing MySQL Databases to MySQL Backed Aurora is on the face of it quite simple. But I
+ran into some issues.">
+<meta itemprop="datePublished" content="2020-04-17T11:28:33&#43;01:00" />
+<meta itemprop="dateModified" content="2020-04-17T11:28:33&#43;01:00" />
+<meta itemprop="wordCount" content="478">
+<meta itemprop="image" content="https://ops.moncky.ninja/images/codescreen.png">
+
+
+
+<meta itemprop="keywords" content="aws,rds,devops," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ops.moncky.ninja/images/codescreen.png"/>
+
+<meta name="twitter:title" content="Importing MySQL Databases to MySQL Backed Aurora PART 1"/>
+<meta name="twitter:description" content="Importing MySQL Databases to MySQL Backed Aurora is on the face of it quite simple. But I
+ran into some issues."/>
+
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top shadow-sm" id="navbar-main-menu">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold" href="https://ops.moncky.ninja/">NinjaOps</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-menu">
+            <ul class="navbar-nav ml-auto">
+                
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                
+                    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                
+            
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    
+<main class="content-page container pt-7 pb-5">
+    
+    <div class="row">
+        <div class="col">
+            <article>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="meta text-muted mb-3">
+                            <p class="created text-muted text-uppercase font-weight-bold mb-1">April 17, 2020</p>
+                            <span class="mr-2"><i class="fas fa-book-open mr-2"></i>478 words</span>
+                            <span><i class="fas fa-clock mr-2"></i>3 mins read</span>
+                        </div>
+
+                        <h1>Importing MySQL Databases to MySQL Backed Aurora PART 1</h1>
+
+                        
+                    </div>
+                </div>
+
+                
+                    
+                    
+                        
+                            
+                            <div class="row justify-content-center mb-3">
+                                <div class="col-lg-10">
+                                    <img data-src="/images/codescreen_hu76e93ce1d4f7af644e604a32f6db70e2_3400881_900x500_fit_box_2.png" class="img-fluid rounded mx-auto d-block" alt="Importing MySQL Databases to MySQL Backed Aurora PART 1">
+                                </div>
+                            </div>
+                        
+                    
+                
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="content">
+                            <p>Importing MySQL Databases to MySQL Backed Aurora is on the face of it quite simple. But I
+ran into some issues.</p>
+<blockquote>
+</blockquote>
+<p>There are a number of options that allow you to migrate an existing database from local MySQL instance.
+In this context, by local, I mean a MySQL instance you manage your self, whether that is a single server running a LAMP
+stack or a dedicated database server as part of a more complex architecture.</p>
+<p>If you&rsquo;re already taking backups, please tell me you are, then you might be using <code>mysqldump</code> tarballing that up and
+putting it somewhere safe.</p>
+<p>Importing your backup into RDS from that is pretty simple, all you need to do is spin up your rds instance. Then from
+your workstation or an EC2 instance and from there you can import your SQL dump file by connecting to your RDS cluster and
+importing the database like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mysql -h cluster.endpoint -P <span style="color:#ae81ff">3306</span> -u db_cluster_master_user -p
+mysql&gt; source backup.sql;
+</code></pre></div><p>This is fine for smaller databases, but what if you&rsquo;re database is larger?  Doing the above will take a fair bit of time
+especially if you&rsquo;re trying to use a T.<em>n</em> instance to do the import as you&rsquo;re limited on the bandwidth you can utilise
+during the transfer.</p>
+<p>Fortunatly there is a better way to do this import, as Amazon allow you to create new clusters from a backup stored in
+an S3 bucket.</p>
+<p>This series of posts will guide you through preparing you database and getting a cluster up and running.</p>
+<h3 id="preparing-your-database-">Preparing Your Database</h3>
+<h4 id="the-users-">The Users</h4>
+<p>There are a few housekeeping tasks that you need to undertake before you begin.  RDS is, in essance, a managed database
+instance.  That means that there are most likely permissions you have for some of your users that will cause your import
+to fail.</p>
+<ul>
+<li><em>SUPER</em></li>
+<li><em>SHUTDOWN</em></li>
+<li><em>FILE</em></li>
+<li><em>CREATE TABLE SPACE</em></li>
+</ul>
+<p>Are all prohibited and if any user in your <code>mysql.user</code> table has them then the RDS import will fail</p>
+<p>You can get a list of users, along with the commands you need to run to revoke the extra permissions by running</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> <span style="color:#a6e22e">CONCAT</span>(<span style="color:#e6db74">&#34;&#39;&#34;</span>,<span style="color:#66d9ef">user</span>,<span style="color:#e6db74">&#34;&#39;@&#39;&#34;</span>,host,<span style="color:#e6db74">&#34;&#39;&#34;</span>) <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#39;user&#39;</span>,
+<span style="color:#a6e22e">CONCAT</span>(<span style="color:#e6db74">&#34;REVOKE SUPER, SHUTDOWN, FILE, CREATE TABLESPACE ON *.* FROM &#39;&#34;</span>,<span style="color:#66d9ef">user</span>,<span style="color:#e6db74">&#34;&#39;@&#39;&#34;</span>,host,<span style="color:#e6db74">&#34;&#39;;&#34;</span>) <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#39;query&#39;</span> <span style="color:#66d9ef">from</span> mysql.<span style="color:#66d9ef">user</span> 
+<span style="color:#66d9ef">WHERE</span> HOST <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">IN</span>  (<span style="color:#e6db74">&#39;localhost&#39;</span>,<span style="color:#e6db74">&#39;127.0.0.1&#39;</span>) 
+<span style="color:#66d9ef">AND</span> (Super_Priv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Y&#39;</span> <span style="color:#66d9ef">OR</span> Shutdown_priv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Y&#39;</span> <span style="color:#66d9ef">OR</span> File_priv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Y&#39;</span> <span style="color:#66d9ef">OR</span> Create_tablespace_priv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Y&#39;</span>);
+</code></pre></div><p>This will check your users for incompatible grants:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#f92672">+--------------+---------------------------------------------------------------------------+</span>
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">user</span>         <span style="color:#f92672">|</span> query                                                                     <span style="color:#f92672">|</span>
+<span style="color:#f92672">+--------------+---------------------------------------------------------------------------+</span>
+<span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;john&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>   <span style="color:#f92672">|</span> <span style="color:#66d9ef">REVOKE</span> SUPER, SHUTDOWN, FILE, <span style="color:#66d9ef">CREATE</span> TABLESPACE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;john&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;   <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;george&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">REVOKE</span> SUPER, SHUTDOWN, FILE, <span style="color:#66d9ef">CREATE</span> TABLESPACE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;george&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>; <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;paul&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>   <span style="color:#f92672">|</span> <span style="color:#66d9ef">REVOKE</span> SUPER, SHUTDOWN, FILE, <span style="color:#66d9ef">CREATE</span> TABLESPACE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;paul&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;   <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;ringo&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>  <span style="color:#f92672">|</span> <span style="color:#66d9ef">REVOKE</span> SUPER, SHUTDOWN, FILE, <span style="color:#66d9ef">CREATE</span> TABLESPACE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39;ringo&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;  <span style="color:#f92672">|</span>
+<span style="color:#f92672">+--------------+---------------------------------------------------------------------------+</span>
+</code></pre></div><p>With the above you can now revoke the forbidden permissions, at which point you&rsquo;re ready to take
+a new backup of your database for importing.</p>
+                        </div><div class="tags my-3"><a class="badge badge-pill badge-light border mr-2" href="/tags/aws">
+                                    <i class="fas fa-tag mr-2"></i>aws
+                                </a><a class="badge badge-pill badge-light border mr-2" href="/tags/rds">
+                                    <i class="fas fa-tag mr-2"></i>rds
+                                </a><a class="badge badge-pill badge-light border mr-2" href="/tags/devops">
+                                    <i class="fas fa-tag mr-2"></i>devops
+                                </a></div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        
+                    </div>
+                </div></article>
+        </div>
+    </div>
+
+    <div class="related-content row mt-5 row-cols-1 row-cols-lg-3"><div class="col mb-3">
+                <div class="card h-100">
+    
+    <a href="/post/myfirstpost/" class="d-block"><img data-src="/images/lightbulb_hued6e53557bdac50fa03d080efb1c817b_89076_700x350_resize_q75_box.jpg" class="card-img-top mx-auto d-block" alt="MyFirstPost"><div class="card-body">
+            <h4 class="card-title">MyFirstPost</h4>
+            <p class="card-text text-muted text-uppercase">April 15, 2020</p>
+            <div class="card-text">
+                This is my first post using Hugo blogging platform
+
+            </div>
+        </div>
+    </a>
+</div>
+
+            </div></div>
+</main>
+
+
+    <footer class="footer text-center bg-dark py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline">
+                    
+                </ul>
+
+                <p class="text-muted">
+                    
+                        Copyright &copy; NinjaOps 2020
+                    
+                </p>
+
+                <p class="text-muted">
+                Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with <a href="https://github.com/puresyntax71/hugo-theme-chunky-poster" target="_blank">Chunky Poster</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        
+            <script src="/dist/main.d608eadfe5ac0688902e.min.js"></script>
+        
+    
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

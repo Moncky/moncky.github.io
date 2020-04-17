@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on NinjaOps</title>
-    <link>https://ops.moncky.ninja/post/</link>
-    <description>Recent content in Posts on NinjaOps</description>
+    <title>devops on NinjaOps</title>
+    <link>https://ops.moncky.ninja/tags/devops/</link>
+    <description>Recent content in devops on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Fri, 17 Apr 2020 11:28:33 +0100</lastBuildDate>
     
-	<atom:link href="https://ops.moncky.ninja/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ops.moncky.ninja/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

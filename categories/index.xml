@@ -6,9 +6,28 @@
     <description>Recent content in Categories on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
+    <lastBuildDate>Fri, 17 Apr 2020 11:28:33 +0100</lastBuildDate>
     
 	<atom:link href="https://ops.moncky.ninja/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>devops</title>
+      <link>https://ops.moncky.ninja/categories/devops/</link>
+      <pubDate>Fri, 17 Apr 2020 11:28:33 +0100</pubDate>
+      
+      <guid>https://ops.moncky.ninja/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thoughts</title>
+      <link>https://ops.moncky.ninja/categories/thoughts/</link>
+      <pubDate>Wed, 15 Apr 2020 20:24:53 +0100</pubDate>
+      
+      <guid>https://ops.moncky.ninja/categories/thoughts/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
