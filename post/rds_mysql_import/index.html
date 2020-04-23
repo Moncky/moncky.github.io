@@ -36,7 +36,7 @@ ran into some issues." />
 ran into some issues.">
 <meta itemprop="datePublished" content="2020-04-17T11:28:33&#43;01:00" />
 <meta itemprop="dateModified" content="2020-04-17T11:28:33&#43;01:00" />
-<meta itemprop="wordCount" content="478">
+<meta itemprop="wordCount" content="563">
 <meta itemprop="image" content="https://ops.moncky.ninja/images/codescreen.png">
 
 
@@ -81,7 +81,7 @@ ran into some issues."/>
                     <div class="col-lg-8">
                         <div class="meta text-muted mb-3">
                             <p class="created text-muted text-uppercase font-weight-bold mb-1">April 17, 2020</p>
-                            <span class="mr-2"><i class="fas fa-book-open mr-2"></i>478 words</span>
+                            <span class="mr-2"><i class="fas fa-book-open mr-2"></i>563 words</span>
                             <span><i class="fas fa-clock mr-2"></i>3 mins read</span>
                         </div>
 
@@ -156,6 +156,11 @@ to fail.</p>
 <span style="color:#f92672">+--------------+---------------------------------------------------------------------------+</span>
 </code></pre></div><p>With the above you can now revoke the forbidden permissions, at which point you&rsquo;re ready to take
 a new backup of your database for importing.</p>
+<h5 id="a-gotcha-">A Gotcha</h5>
+<p>As you use your database in the real world, users will be added and dropped, tables dropped and changed and sometimes things
+aren&rsquo;t tidied up properly.  One thing that might be left behind is a user who has a GRANT on a table that no longer exists.
+If that is the case, then your import will appear to take a very long time to complete, or silently fail.</p>
+<p>Make sure that any VALID grants are to entities that actually exist in your Database.ß</p>
                         </div><div class="tags my-3"><a class="badge badge-pill badge-light border mr-2" href="/tags/aws">
                                     <i class="fas fa-tag mr-2"></i>aws
                                 </a><a class="badge badge-pill badge-light border mr-2" href="/tags/rds">

@@ -6,10 +6,19 @@
     <description>Recent content in rds on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 17 Apr 2020 11:28:33 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2020 20:30:30 +0100</lastBuildDate>
     
 	<atom:link href="https://ops.moncky.ninja/tags/rds/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RDS_mysql_import Part2</title>
+      <link>https://ops.moncky.ninja/post/rds_mysql_import-part2/</link>
+      <pubDate>Thu, 23 Apr 2020 20:30:30 +0100</pubDate>
+      
+      <guid>https://ops.moncky.ninja/post/rds_mysql_import-part2/</guid>
+      <description>&lt;p&gt;Backup your database so that RDS can import it for you.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Importing MySQL Databases to MySQL Backed Aurora PART 1</title>

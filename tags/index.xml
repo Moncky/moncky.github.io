@@ -6,7 +6,7 @@
     <description>Recent content in Tags on NinjaOps</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 17 Apr 2020 11:28:33 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2020 20:30:30 +0100</lastBuildDate>
     
 	<atom:link href="https://ops.moncky.ninja/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>aws</title>
       <link>https://ops.moncky.ninja/tags/aws/</link>
-      <pubDate>Fri, 17 Apr 2020 11:28:33 +0100</pubDate>
+      <pubDate>Thu, 23 Apr 2020 20:30:30 +0100</pubDate>
       
       <guid>https://ops.moncky.ninja/tags/aws/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>devops</title>
       <link>https://ops.moncky.ninja/tags/devops/</link>
-      <pubDate>Fri, 17 Apr 2020 11:28:33 +0100</pubDate>
+      <pubDate>Thu, 23 Apr 2020 20:30:30 +0100</pubDate>
       
       <guid>https://ops.moncky.ninja/tags/devops/</guid>
       <description></description>
@@ -32,7 +32,7 @@
     <item>
       <title>rds</title>
       <link>https://ops.moncky.ninja/tags/rds/</link>
-      <pubDate>Fri, 17 Apr 2020 11:28:33 +0100</pubDate>
+      <pubDate>Thu, 23 Apr 2020 20:30:30 +0100</pubDate>
       
       <guid>https://ops.moncky.ninja/tags/rds/</guid>
       <description></description>
